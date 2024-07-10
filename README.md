@@ -59,21 +59,21 @@
 
 ---
 
->COMO JOGAR 🎮
+>**COMO JOGAR** 🎮
 
 
->> objectivo : Alcancar o topo 🏆
+>> **objectivo** : Alcancar o topo 🏆
 
->> cuidado: ha obstaculos vivos e inanimados 💀
+>> **cuidado**: ha obstaculos vivos e inanimados 💀
 
->> comandos : 🕹
+>> **comandos** : 🕹
 
 
->>> ⬆ ou w | pular
+>>> ⬆ ou **w** | pular
 
->>> ⬇ ou s | acao
+>>> ⬇ ou **s** | acao
 
->>> ➡ ou d | ir para direita
+>>> ➡ ou **d** | ir para direita
 
->>> ⬅ ou a | ir para esquera
+>>> ⬅ ou **a** | ir para esquera
 
