@@ -4,11 +4,11 @@ from models.macros import *
 vector = pygame.math.Vector2
 
 class Platform(pygame.sprite.Sprite):
-    def __init__(self, ) -> None:
+    def __init__(self, vector_size, vector_position, color) -> None:
         super().__init__()
-        self.size = vector(WIDTH, 40)
-        self.position = vector(WIDTH / 2 ,HEIGHT - int(self.size.y / 2))
+        self.size = vector_size
+        self.position = vector_position
         self.surf = pygame.Surface(self.size)
-        self.surf.fill((150, 75, 0))
+        self.surf.fill(color)
         self.rect = self.surf.get_rect(center=self.position)
 

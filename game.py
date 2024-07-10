@@ -1,4 +1,5 @@
 import sys
+import random
 import pygame
 from models.macros import *
 from models.player import Player
@@ -10,15 +11,28 @@ pygame.init()
 framepsec = pygame.time.Clock()
 displaysurface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("VPong")
+vector = pygame.math.Vector2
+
 all_sprites = pygame.sprite.Group()
-player = Player()
-platform = Platform()
-
-all_sprites.add(player)
-all_sprites.add(platform)
-
 platforms = pygame.sprite.Group()
-platforms.add(platform)
+
+player = Player()
+all_sprites.add(player)
+
+
+land = Platform(vector(WIDTH, 40), vector(WIDTH / 2 ,HEIGHT - 20), (208, 191, 0))
+all_sprites.add(land)
+platforms.add(land)
+
+
+for x in range(random.randint(14, 18)):
+    platform = Platform( vector(random.randint(100,200), 20) , vector(random.randint(0, WIDTH-10) , 
+                                                                     random.randint(int(HEIGHT / 3) - 50, HEIGHT - 30 )), (random.randint(0,255), random.randint(0,50) , random.randint(0,255)))
+    if pygame.sprite.spritecollide(platform, platforms, False) :
+        continue
+    all_sprites.add(platform)
+    platforms.add(platform)
+   
 
 while (True):
     for event in pygame.event.get():
@@ -34,6 +48,13 @@ while (True):
 
     for entity in all_sprites:
         displaysurface.blit(entity.surf, entity.rect)
+
+    if player.rect.top <= HEIGHT / 3 + 50 :
+        player.position.y += abs(player.velocity.y)
+        for platform in platforms:
+            platform.rect.y += abs(player.velocity.y)
+            if platform.rect.top >= HEIGHT:
+                platform.kill()
 
     pygame.display.update()
     framepsec.tick(FPS)

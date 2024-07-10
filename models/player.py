@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self) -> None:
         super().__init__()
         self.jumps = 0
-        self.position = vector((10, 5))
+        self.position = vector((10, HEIGHT - 30))
         self.velocity = vector(0, 0)
         self.acceleration = vector(0, 0)
         self.size = vector(30, 30)
@@ -38,7 +38,7 @@ class Player(pygame.sprite.Sprite):
     
     def jump(self):
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[K_UP] and self.jumps < 15:
+        if pressed_keys[K_UP] and self.jumps < 10:
             self.velocity.y = -5
             self.jumps += 1
         
