@@ -22,23 +22,28 @@
 
 #### INSTALACAO
 
+**requisitos**
+    - git
+    - python3
+    - pip 
+
 *Siga esses passos para instalar esse prototipo no seu computador*
 
-*baixe o repositorio git!*
+*clone o repositorio git!*
 
 ```
-    git clone https://github.com/fernando-vunge/remove_background_image.git
+    git clone https://https://github.com/fernando-vunge/game_platform.git
 ```
 
 *entre na pasta!*
 
 ```
-    cd remove_background_image/
+    cd game_platform/
 ```
-*use o pip para instalar a biblioteca ***rembg*** !*
+*use o pip para instalar a biblioteca ***pygame*** !*
 
 ```
-   pip install rembg
+   pip install pygame
 ```
 
 
@@ -46,10 +51,10 @@
 
 #### EXECUCAO
 
-*execute o ficheiro app.py*
+*execute o ficheiro game.py*
 
 ```
-    python app.py
+    python game.py
 ```
 ---
 
