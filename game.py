@@ -1,16 +1,20 @@
 import sys
 import random
 import pygame
+import pymunk
 from models.macros import *
 from models.player import Player
 from models.platform import Platform
 from pygame.locals import *
 
 pygame.init()
+pygame.display.set_caption("VORLD")
 
-framepsec = pygame.time.Clock()
-displaysurface = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("VPong")
+fps = pygame.time.Clock()
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
+space = pymunk.Space()
+space.gravity = (0, 900)
 vector = pygame.math.Vector2
 
 all_sprites = pygame.sprite.Group()
@@ -39,14 +43,14 @@ while (True):
             pygame.quit()
             sys.exit()
      
-    displaysurface.fill((0,191,255))
+    screen.fill((0,191,255))
 
     player.move()
     player.jump()
     player.update(platforms)
 
     for entity in all_sprites:
-        displaysurface.blit(entity.surf, entity.rect)
+        screen.blit(entity.surf, entity.rect)
 
     if player.rect.top <= HEIGHT / 3 + 50 :
         player.position.y += abs(player.velocity.y)
@@ -56,4 +60,4 @@ while (True):
                 platform.kill()
 
     pygame.display.update()
-    framepsec.tick(FPS)
+    fps.tick(FPS)
