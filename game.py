@@ -17,15 +17,21 @@ platform = Platform()
 all_sprites.add(player)
 all_sprites.add(platform)
 
+platforms = pygame.sprite.Group()
+platforms.add(platform)
+
 while (True):
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
      
-    displaysurface.fill((0,0,0))
+    displaysurface.fill((0,191,255))
 
     player.move()
+    player.jump()
+    player.update(platforms)
+
     for entity in all_sprites:
         displaysurface.blit(entity.surf, entity.rect)
 

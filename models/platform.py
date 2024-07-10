@@ -9,6 +9,6 @@ class Platform(pygame.sprite.Sprite):
         self.size = vector(WIDTH, 40)
         self.position = vector(WIDTH / 2 ,HEIGHT - int(self.size.y / 2))
         self.surf = pygame.Surface(self.size)
-        self.surf.fill((255, 0, 0))
-        self.rect = self.surf.get_rect(center = (225, 200))
+        self.surf.fill((150, 75, 0))
+        self.rect = self.surf.get_rect(center=self.position)
 
