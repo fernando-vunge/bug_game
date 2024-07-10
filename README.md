@@ -23,6 +23,7 @@
 #### INSTALACAO
 
 **requisitos**
+    
     - git
     - python3
     - pip 
@@ -65,20 +66,20 @@
 ---
 
 >**COMO JOGAR** 🎮
-
-
+>
+>
 >> **objectivo** : Alcancar o topo 🏆
-
+>>
 >> **cuidado**: ha obstaculos vivos e inanimados 💀
-
+>>
 >> **comandos** : 🕹
-
-
+>>
+>>
 >>> ⬆ ou **w** | pular
-
+>>>
 >>> ⬇ ou **s** | acao
-
+>>>
 >>> ➡ ou **d** | ir para direita
-
+>>>
 >>> ⬅ ou **a** | ir para esquera
 
