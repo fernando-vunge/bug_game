@@ -3,7 +3,7 @@
 #### Neste projecto usei a biblioteca pygame, e criei um jogo 2D para praticar Orientacao a objectos 👌🏿 em Python 🐍, este jogo basea-se em obstaculos e objectivo, conduzindo o Vox (juncao de Vunge 🥴 e Box 🤓), um personagem 2D em um plano Bidimensional regrado por leis basicas da Fisica 🍎 (essa foi a parte mais divertida 💙)
 
 >***⚠ Atencao:***
->>**O JOGO AINDA NAO ESTA TERMINA (PAUSADO)**
+>>**O JOGO AINDA NAO ESTA TERMINADO (PAUSADO)**
 
 >>**MAS JA 'E EXECUTAVEL**
 
