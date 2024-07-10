@@ -26,8 +26,7 @@ platforms.add(land)
 
 
 for x in range(random.randint(14, 18)):
-    platform = Platform( vector(random.randint(100,200), 20) , vector(random.randint(0, WIDTH-10) , 
-                                                                     random.randint(int(HEIGHT / 3) - 50, HEIGHT - 30 )), (random.randint(0,255), random.randint(0,50) , random.randint(0,255)))
+    platform = Platform( vector(random.randint(50,100), 10) , vector(random.randint(0, WIDTH-10) ,                                                           random.randint(int(HEIGHT / 3) - 50, HEIGHT - 30 )), (random.randint(0,255), random.randint(0,50) , random.randint(0,255)))
     if pygame.sprite.spritecollide(platform, platforms, False) :
         continue
     all_sprites.add(platform)
