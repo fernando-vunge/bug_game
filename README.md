@@ -33,7 +33,7 @@
 *clone o repositorio git!*
 
 ```
-    git clone https://https://github.com/fernando-vunge/game_platform.git
+    git clone https://github.com/fernando-vunge/game_platform.git
 ```
 
 *entre na pasta!*
