@@ -1,6 +1,6 @@
 # 🔥 ⚡ game platform (Jogo de Plataforma) 💥 ☀
 
-#### Neste projecto usei a biblioteca pygame, e criei um jogo 2D para praticar Orientacao a objectos 👌🏿 em Python 🐍, este jogo basea-se em obstaculos e objectivo, conduzindo o Vungox (juncao de Vunge 🥴 e Box 🤓), um personagem 2D em um plano Bidimensional regrado por leis basicas da Fisica 🍎 (essa foi a parte mais divertida 💙)
+#### Neste projecto usei a biblioteca pygame, e criei um jogo 2D para praticar Orientacao a objectos 👌🏿 em Python 🐍, este jogo basea-se em obstaculos e objectivo, conduzindo o Vox (juncao de Vunge 🥴 e Box 🤓), um personagem 2D em um plano Bidimensional regrado por leis basicas da Fisica 🍎 (essa foi a parte mais divertida 💙)
 
 >***⚠ Atencao:***
 >>**a primeira vez que executar o programa tera que estar conecatado a internet e vai demorar cerca de um minuto a terminar o processo**
@@ -59,4 +59,11 @@
 
 ---
 
->Este projecto foi inspirado nesse [artigo](https://terminalroot.com.br/2022/11/remova-facilmente-fundo-de-imagens-com-python.html) do blog terminalroot.com.br
+>COMO JOGAR 🎮
+>> objectivo : Alcancar o topo 🏆
+>> cuidado: ha obstaculos vivos e inanimados 💀
+>> comandos : 🕹
+>>> ⬆ ou w | pular
+>>> ⬇ ou s | acao
+>>> ➡ ou d | ir para direita
+>>> ⬅ ou a | ir para esquera
