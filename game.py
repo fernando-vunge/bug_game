@@ -28,14 +28,17 @@ land = Platform(vector(WIDTH, 40), vector(WIDTH / 2 ,HEIGHT - 20), (208, 191, 0)
 all_sprites.add(land)
 platforms.add(land)
 
-
-for x in range(random.randint(14, 18)):
-    platform = Platform( vector(random.randint(50,100), 10) , vector(random.randint(0, WIDTH-10) ,                                                           random.randint(int(HEIGHT / 3) - 50, HEIGHT - 30 )), (random.randint(0,255), random.randint(0,50) , random.randint(0,255)))
-    if pygame.sprite.spritecollide(platform, platforms, False) :
-        continue
-    all_sprites.add(platform)
-    platforms.add(platform)
+def generate_palform(hight_initial ,hight_limit):
+    for x in range(random.randint(14, 18)):
+        platform = Platform( vector(random.randint(50,100), 10) , vector(random.randint(0, WIDTH-10) ,random.randint(hight_initial, hight_limit)), (random.randint(0,2), random.randint(0,50) , random.randint(0,2)))
+        if pygame.sprite.spritecollide(platform, platforms, False) :
+            continue
+        all_sprites.add(platform)
+        platforms.add(platform)
    
+
+
+generate_palform(int(HEIGHT / 3) - 50, HEIGHT - 10)
 
 while (True):
     for event in pygame.event.get():
@@ -46,6 +49,7 @@ while (True):
     screen.fill((0,191,255))
 
     player.move()
+    player.animate()
     player.jump()
     player.update(platforms)
 
@@ -58,6 +62,9 @@ while (True):
             platform.rect.y += abs(player.velocity.y)
             if platform.rect.top >= HEIGHT:
                 platform.kill()
+    
+    if player.position.y < HEIGHT / 2 - 50 :
+        generate_palform(20 , int(HEIGHT / 3) - 50)
 
     pygame.display.update()
     fps.tick(FPS)

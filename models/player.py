@@ -1,4 +1,5 @@
 import pygame
+import os
 from models.macros import *
 from pygame.locals import *
 import pymunk
@@ -10,8 +11,15 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # Carrega a imagem para o Surface
-        player_image_path = './assets/idle.png'
-        self.player_image = pygame.transform.scale(pygame.image.load(player_image_path), (50, 50))
+        self.idle_images = self.load_images('./assets/animation/idle')
+        self.walk_images = self.load_images('./assets/animation/walk')
+        self.current_images = self.idle_images
+
+        self.image_index = 0
+        self.animation_speed = 0.2
+        self.player_image = self.current_images[self.image_index]
+        self.isright = True
+        self.isleft = False
 
         # Inicialização das variáveis do Pygame
         self.jumps = 0
@@ -23,15 +31,39 @@ class Player(pygame.sprite.Sprite):
         self.surf.blit(self.player_image, (0, 0))
         self.rect = self.surf.get_rect(center=self.position)
 
+    def load_images(self, path):
+        images = []
+        for file_name in sorted(os.listdir(path)):
+            img_path = os.path.join(path, file_name)
+            image = pygame.image.load(img_path)
+            scaled_image = pygame.transform.scale(image, (30, 50))
+            images.append(scaled_image)
+        return images
+
+    def animate(self):
+        self.image_index += self.animation_speed
+        if self.image_index >= len(self.current_images):
+            self.image_index = 0
+        self.surf = self.current_images[int(self.image_index)]
+
+        if self.isleft:
+            self.surf = pygame.transform.flip(self.surf, True, False)
 
     def move(self):
         self.acceleration = vector(0 ,0.49)
-
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[K_LEFT] :
-            self.acceleration.x = -ACCELERATION
         if pressed_keys[K_RIGHT] :
+            self.isright = True
+            self.isleft = False
+            self.current_images = self.walk_images
             self.acceleration.x = ACCELERATION
+        elif pressed_keys[K_LEFT] :
+            self.isleft = True
+            self.isright = False
+            self.current_images = self.walk_images
+            self.acceleration.x = -ACCELERATION
+        else:
+            self.current_images = self.idle_images
 
         self.acceleration.x += self.velocity.x * FRICTION
         self.velocity += self.acceleration
