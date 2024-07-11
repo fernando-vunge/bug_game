@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
 
         # Carrega a imagem para o Surface
         player_image_path = './assets/idle.png'
-        self.player_image = pygame.image.load(player_image_path)
+        self.player_image = pygame.transform.scale(pygame.image.load(player_image_path), (50, 50))
 
         # Inicialização das variáveis do Pygame
         self.jumps = 0
@@ -19,7 +19,7 @@ class Player(pygame.sprite.Sprite):
         self.velocity = vector(0, 0)
         self.acceleration = vector(0, 0)
         self.size = vector(30, 30)
-        self.surf = pygame.Surface(self.size)
+        self.surf =  self.player_image #pygame.Surface(self.size)
         self.surf.blit(self.player_image, (0, 0))
         self.rect = self.surf.get_rect(center=self.position)
 
