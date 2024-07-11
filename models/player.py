@@ -10,15 +10,8 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         # Carrega a imagem para o Surface
-        player_image_path = '../assets/idle.png'
-        self.player_image = pygame.image.load(player_image_path).convert_alpha()
-
-        # Criação do corpo cinemático no pymunk
-        self.pymunk_body = pymunk.Body(pymunk.moment_for_circle(mass=0, inertia=None, radius=15), (0,0), 0)
-        self.pymunk_body.type = pymunk.CollisionType.Player  # Definindo um tipo de colisão para facilitar a detecção de colisões
-        self.pymunk_shape = pymunk.Circle(self.pymunk_body, 15)
-        self.pymunk_shape.collision_type = self.pymunk_body.type  # Associando o tipo de colisão ao shape
-        self.pymunk_shape.friction = 0.5
+        player_image_path = './assets/idle.png'
+        self.player_image = pygame.image.load(player_image_path)
 
         # Inicialização das variáveis do Pygame
         self.jumps = 0
@@ -27,11 +20,9 @@ class Player(pygame.sprite.Sprite):
         self.acceleration = vector(0, 0)
         self.size = vector(30, 30)
         self.surf = pygame.Surface(self.size)
-        self.surf.blit(self.player_image, (0, 0))  # Usando a imagem carregada para preencher o Surface
+        self.surf.blit(self.player_image, (0, 0))
         self.rect = self.surf.get_rect(center=self.position)
 
-        # Adiciona a forma ao espaço do pymunk
-        space.add(self.pymunk_shape)
 
     def move(self):
         self.acceleration = vector(0 ,0.49)
