@@ -14,7 +14,7 @@ fps = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 space = pymunk.Space()
-space.gravity = (0, 900)
+space.gravity = (0, 800)
 vector = pygame.math.Vector2
 
 all_sprites = pygame.sprite.Group()
