@@ -64,11 +64,9 @@
 >> **comandos** : 🕹
 >>
 >>
->>> ⬆ ou **w** | pular
+>>> ⬆ | pular
 >>>
->>> ⬇ ou **s** | acao
+>>> ➡ | ir para direita
 >>>
->>> ➡ ou **d** | ir para direita
->>>
->>> ⬅ ou **a** | ir para esquera
+>>> ⬅ | ir para esquera
 
