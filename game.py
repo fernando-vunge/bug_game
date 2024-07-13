@@ -17,11 +17,12 @@ vector = pygame.math.Vector2
 all_sprites = pygame.sprite.Group()
 platforms = pygame.sprite.Group()
 
+
+generate_level(LEVEL_ONE ,all_sprites=all_sprites, platforms=platforms)
+
 player = Player()
 all_sprites.add(player)
 
-
-generate_level(LEVEL_ONE ,all_sprites=all_sprites, platforms=platforms)
 
 while (True):
     for event in pygame.event.get():

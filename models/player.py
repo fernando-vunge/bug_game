@@ -27,10 +27,10 @@ class Player(pygame.sprite.Sprite):
 
         # Inicialização das variáveis do Pygame
         self.jumps = 0
-        self.position = vector((30, HEIGHT - 30))
+        self.position = vector((30, HEIGHT - 60))
         self.velocity = vector(0, 0)
         self.acceleration = vector(0, 0)
-        self.size = vector(50, 64)
+        self.size = vector(32, 32)
         self.surf =  self.get_sprite(self.current_sprite_sheet, self.idle_frame) #pygame.Surface(self.size)
         self.rect = self.surf.get_rect(center=self.position)
 
@@ -88,7 +88,7 @@ class Player(pygame.sprite.Sprite):
     
     def jump(self):
         pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[K_UP] and self.jumps < 10:
+        if pressed_keys[K_UP] and self.jumps < 7:
             self.velocity.y = -6
             self.jumps += 1
 
@@ -96,7 +96,9 @@ class Player(pygame.sprite.Sprite):
         hits = pygame.sprite.spritecollide(self, platforms, False)
         if self.velocity.y > 0:
             if hits:
-                self.position.y = hits[0].rect.top + 1
-                self.velocity.y = 0
-                self.jumps = 0
+                for s in range(len(hits)):
+                    if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2)) ) and self.position.y < hits[s].position.y:
+                        self.position.y = hits[s].rect.top + 1
+                        self.velocity.y = 0
+                        self.jumps = 0
         self.animate()

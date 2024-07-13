@@ -17,7 +17,7 @@ LEVEL_ONE = [
     "LL*************",
     "****LL**LL****L",
     "************L**",
-    "***************",
+    "***********L***",
     "LLLLLLLLLLLLLLL",
     "LLLLLLLLLLLLLLL"
 ]
