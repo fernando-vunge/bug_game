@@ -1,5 +1,4 @@
 import pygame
-import os
 from models.macros import *
 from pygame.locals import *
 
