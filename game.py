@@ -53,8 +53,8 @@ while (True):
         for s in range(len(hits_on_coins)):
             hits_on_coins[s].kill()
 
-    for entity in objects:
-        entity.animate()
+    #for entity in objects:
+    #    entity.animate()
 
     for entity in all_sprites:
         screen.blit(entity.surf, entity.rect)

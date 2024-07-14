@@ -12,10 +12,10 @@ images_path = {
 }
 size = {
     'icon' : (64, 64),
-    'idle' : (320, 64),
+    'idle' : (32 * 4, 32),
     'coin' : (512, 64),
-    'land' : (64, 64),
-    'walk' : (128, 64)
+    'land' : (32, 32),
+    'walk' : (320, 32)
 }
 
 for key, path in images_path.items():

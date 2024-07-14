@@ -10,14 +10,13 @@ class Player(pygame.sprite.Sprite):
     def __init__(self) -> None:
         super().__init__()
 
-         # Configurações da animação
-        self.num_idle_sprites = 5  # Número total de sprites idle
-        self.num_walk_sprites = 2  # Número total de sprites walk
-        self.animation_speed = 0.2
+        self.num_idle_sprites = 4 
+        self.num_walk_sprites = 10
+        self.animation_speed = 0.4
         self.idle_frame = 0
         self.walk_frame = 0
 
-        # Carrega as imagens de spritesheets
+        
         self.idle_sprite_sheet = get_image('idle') #pygame.image.load('./assets/sprites/idle.png').convert_alpha()
         self.walk_sprite_sheet = get_image('walk') #pygame.image.load('./assets/sprites/walk.png').convert_alpha()
         self.current_sprite_sheet = self.idle_sprite_sheet
@@ -31,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.position = vector((30, HEIGHT - 60))
         self.velocity = vector(0, 0)
         self.acceleration = vector(0, 0)
-        self.size = vector(32, 32)
+        self.size = vector(16, 16)
         self.surf =  self.get_sprite(self.current_sprite_sheet, self.idle_frame) #pygame.Surface(self.size)
         self.rect = self.surf.get_rect(center=self.position)
 
@@ -98,7 +97,7 @@ class Player(pygame.sprite.Sprite):
         if self.velocity.y > 0:
             if hits:
                 for s in range(len(hits)):
-                    if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2)) ) and self.position.y < hits[s].position.y:
+                    if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2))) and self.position.y < hits[s].position.y:
                         self.position.y = hits[s].rect.top + 1
                         self.velocity.y = 0
                         self.jumps = 0
