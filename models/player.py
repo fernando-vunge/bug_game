@@ -1,6 +1,8 @@
 import pygame
 from models.macros import *
 from pygame.locals import *
+from models.resource import *
+
 
 vector = pygame.math.Vector2
 
@@ -16,8 +18,8 @@ class Player(pygame.sprite.Sprite):
         self.walk_frame = 0
 
         # Carrega as imagens de spritesheets
-        self.idle_sprite_sheet = pygame.image.load('./assets/animation/idle.png').convert_alpha()
-        self.walk_sprite_sheet = pygame.image.load('./assets/animation/walk.png').convert_alpha()
+        self.idle_sprite_sheet = get_image('idle') #pygame.image.load('./assets/sprites/idle.png').convert_alpha()
+        self.walk_sprite_sheet = get_image('walk') #pygame.image.load('./assets/sprites/walk.png').convert_alpha()
         self.current_sprite_sheet = self.idle_sprite_sheet
         self.current_num_sprites = self.num_idle_sprites
 

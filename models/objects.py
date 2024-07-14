@@ -1,6 +1,7 @@
 import pygame
 from models.macros import *
 from pygame.locals import *
+from models.resource import *
 
 vector = pygame.math.Vector2
 
@@ -13,7 +14,7 @@ class Coin(pygame.sprite.Sprite):
         self.animation_speed = 0.2
         self.frame = 0
 
-        self.sprite_sheet = pygame.image.load('./assets/animation/coin.png').convert_alpha()
+        self.sprite_sheet = get_image('coin') #pygame.image.load('./assets/sprites/coin.png').convert_alpha()
         self.size = vector_size
         self.position = vector((vector_position.x + (vector_size.x / 2)), (vector_position.y + (vector_size.y / 2)))
         self.surf =  self.get_sprite(self.sprite_sheet, self.frame) #pygame.Surface(self.size)

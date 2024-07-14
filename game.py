@@ -1,8 +1,9 @@
 import sys
+import io
 import pygame
+from models.resource import *
 from models.macros import *
 from models.player import Player
-from models.platform import Platform
 from models.level import generate_level
 from pygame.locals import *
 
@@ -13,6 +14,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 vector = pygame.math.Vector2
 font = pygame.font.Font("assets/fonts/font.ttf", 12)
 
+
+pygame.display.set_icon(get_image('icon'))
 
 points = 0
 lifes  = "# # #"
