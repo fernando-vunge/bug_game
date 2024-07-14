@@ -97,7 +97,7 @@ class Player(pygame.sprite.Sprite):
         if self.velocity.y > 0:
             if hits:
                 for s in range(len(hits)):
-                    if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2))) and self.position.y < hits[s].position.y:
+                    if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2) - 8) and self.position.x < (hits[s].position.x + (hits[s].size.x / 2) + 8)) and self.position.y + 4 < hits[s].position.y:
                         self.position.y = hits[s].rect.top + 1
                         self.velocity.y = 0
                         self.jumps = 0
