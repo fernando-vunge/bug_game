@@ -37,7 +37,6 @@ all_sprites.add(player)
 while (True):
     for event in pygame.event.get():
         if event.type == QUIT:
-            print(len(LEVEL_ONE[0]))
             pygame.quit()
             sys.exit()
      
