@@ -34,7 +34,6 @@ id_level += 1
 player = Player()
 all_sprites.add(player)
 
-
 while (True):
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -44,7 +43,7 @@ while (True):
     screen.fill((0,191,255))
     screen.blit(fundo, fundo.get_rect(center= vector(WIDTH / 2,HEIGHT / 2)))
 
-    player.move()
+    player.move(platforms)
     player.jump()
     player.update(platforms)
 
