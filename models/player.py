@@ -25,6 +25,7 @@ class Player(pygame.sprite.Sprite):
         self.isright = True
         self.isleft = False
 
+        
         # Inicialização das variáveis do Pygame
         self.jumps = 0
         self.position = vector((30, HEIGHT - 40))
@@ -34,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.surf =  self.get_sprite(self.current_sprite_sheet, self.idle_frame) #pygame.Surface(self.size)
         self.rect = self.surf.get_rect(center=self.position)
 
-
+    
     def get_sprite(self, sheet, frame):
         x = frame * SPRITE_WIDTH
         y = 0
@@ -56,26 +57,26 @@ class Player(pygame.sprite.Sprite):
         if self.isleft:
             self.surf = pygame.transform.flip(self.surf, True, False)
 
+
     def collide(self, platforms):
         hits = pygame.sprite.spritecollide(self, platforms, False)
         if hits:
-            pressed_keys = pygame.key.get_pressed()
             for s in range(len(hits)):
                 if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2) - 8) and self.position.x < (hits[s].position.x + (hits[s].size.x / 2) + 8)) and self.position.y < hits[s].position.y:
                         if self.velocity.y > 0:
                             self.position.y = hits[s].rect.top + 1
                             self.velocity.y = 0
                             self.jumps = 0
-                if (self.position.y < hits[s].position.x - 8 and self.position.y > hits[s].position.x + 8) and (self.position.x + 8) >= (hits[s].position.x - 8) :
-                    self.position.x += -self.velocity.x + self.acceleration.x
-                    print("ok")
+                
+                if (hits[s].position.y + 16 - self.position.y <= 15) and (hits[s].position.y + 16 - self.position.y > -10):
+                    if self.position.x + 16 >= hits[s].position.x - 16 or self.position.x - 16 >= hits[s].position.x + 16:
+                        self.position.x += -self.velocity.x + self.acceleration.x
+                        
 
-                if self.position.y - (self.size.y / 2) <= hits[s].rect.bottom and self.position.y > hits[s].position.y:
+
+                if self.position.y - (self.size.y) <= hits[s].rect.bottom and self.position.y > hits[s].position.y:
                     self.velocity.y += 2
-                print(f"[{s}] => {hits[s].rect.top}")
-        print(self.position.y)     
-                    
-        
+            
 
     def move(self):
         self.acceleration = vector(0, 0.49)
@@ -96,13 +97,14 @@ class Player(pygame.sprite.Sprite):
             self.current_sprite_sheet = self.idle_sprite_sheet
             self.current_num_sprites = self.num_idle_sprites
 
+
         self.acceleration.x += self.velocity.x * FRICTION
         self.velocity += self.acceleration
         self.position += self.velocity + (0.5 * self.acceleration)
         
-        if self.position.x < (self.size.x / 2) + 1:
+        if self.position.x - 16 <= 0:
             self.position.x += -self.velocity.x + self.acceleration.x
-        if self.position.x > WIDTH - (self.size.x / 2) + 1:
+        if self.position.x + 16 >= WIDTH:
             self.position.x += -self.velocity.x + self.acceleration.x
 
         self.rect.midbottom = self.position
