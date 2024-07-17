@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         
         # Inicialização das variáveis do Pygame
         self.jumps = 0
-        self.position = vector((30, HEIGHT - 40))
+        self.position = vector((30, HEIGHT - 32))
         self.velocity = vector(0, 0)
         self.acceleration = vector(0, 0)
         self.size = vector(32, 32)
@@ -62,20 +62,19 @@ class Player(pygame.sprite.Sprite):
         hits = pygame.sprite.spritecollide(self, platforms, False)
         if hits:
             for s in range(len(hits)):
-                if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2) - 8) and self.position.x < (hits[s].position.x + (hits[s].size.x / 2) + 8)) and self.position.y < hits[s].position.y:
+                if (self.position.x > (hits[s].position.x - (hits[s].size.x / 2) - 8) and self.position.x < (hits[s].position.x + (hits[s].size.x / 2) + 8)) and self.position.y <= hits[s].position.y:
                         if self.velocity.y > 0:
                             self.position.y = hits[s].rect.top + 1
                             self.velocity.y = 0
                             self.jumps = 0
                 
+
                 if (hits[s].position.y + 16 - self.position.y <= 15) and (hits[s].position.y + 16 - self.position.y > -10):
-                    if self.position.x + 16 >= hits[s].position.x - 16 or self.position.x - 16 >= hits[s].position.x + 16:
+                    if self.position.x + 10 >= hits[s].position.x - 16 or self.position.x - 22 >= hits[s].position.x + 16:
                         self.position.x += -self.velocity.x + self.acceleration.x
                         
-
-
-                if self.position.y - (self.size.y) <= hits[s].rect.bottom and self.position.y > hits[s].position.y:
-                    self.velocity.y += 2
+                if self.position.y - 32 <= hits[s].rect.bottom and self.position.y > hits[s].rect.bottom:
+                    self.velocity.y += 1
             
 
     def move(self):
@@ -106,6 +105,9 @@ class Player(pygame.sprite.Sprite):
             self.position.x += -self.velocity.x + self.acceleration.x
         if self.position.x + 16 >= WIDTH:
             self.position.x += -self.velocity.x + self.acceleration.x
+
+        if self.position.y > HEIGHT - 32:
+            self.position.y += -self.velocity.y + self.acceleration.y
 
         self.rect.midbottom = self.position
     
