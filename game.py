@@ -43,7 +43,7 @@ while (True):
     screen.fill((0,191,255))
     screen.blit(fundo, fundo.get_rect(center= vector(WIDTH / 2,HEIGHT / 2)))
 
-    player.move(platforms)
+    player.move()
     player.jump()
     player.update(platforms)
 
