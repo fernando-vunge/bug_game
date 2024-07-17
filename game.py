@@ -13,6 +13,7 @@ fps = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 vector = pygame.math.Vector2
 font = pygame.font.Font("assets/fonts/font.ttf", 12)
+fundo = pygame.image.load("assets/fundo.jpg")
 
 
 pygame.display.set_icon(get_image('icon'))
@@ -41,6 +42,7 @@ while (True):
             sys.exit()
      
     screen.fill((0,191,255))
+    screen.blit(fundo, fundo.get_rect(center= vector(WIDTH / 2,HEIGHT / 2)))
 
     player.move()
     player.jump()
