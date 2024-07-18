@@ -8,7 +8,7 @@ from models.level import generate_level
 from pygame.locals import *
 
 pygame.init()
-pygame.display.set_caption("VORLD")
+pygame.display.set_caption("BUG")
 fps = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 vector = pygame.math.Vector2
